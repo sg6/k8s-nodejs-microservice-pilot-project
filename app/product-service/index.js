@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
+var cors = require('cors');
 
-const path = require('path');
 const dotenv = require('dotenv');
 const bodyParser = require("body-parser");
 dotenv.config();
@@ -9,46 +9,37 @@ dotenv.config();
 const port = process.env.PORT|| 3000;
 
 app.use(bodyParser.json());
+app.use(cors());
 
 app.get('/', (req, res) => {
-    res.status(200).send('Hello World');
+    res.status(200).send('Hello World from Product Service');
 });
 
-const users = [
+const products = [
     {
         id: 1,
-        name: 'John',
-        age: 20
+        name: 'Adidas Original Sneakers',
+        price: 89.99,
     },
     {
         id: 2,
-        name: 'Jane',
-        age: 21
+        name: 'Nike Air Force 1 Shoes',
+        price: 129.99,
     },
     {
         id: 3,
-        name: 'Jake',
-        age: 22
-    },
-    {
-        id: 4,
-        name: 'Jill',
-        age: 23
-    },
-    {
-        id: 5,
-        name: 'Jen',
-        age: 24
+        name: 'New Balance 9000 Shoes',
+        price: 159.99,
     }
 ];
 
-app.get('/api/v1/users', (req, res) => {
-    return res.status(200).send(users);
+app.get('/api/v1/products', (req, res) => {
+    return res.status(200).send(products);
 });
 
-app.get('/api/v1/users/:id', (req, res) => {
+app.get('/api/v1/products/:id', (req, res) => {
     const id = parseInt(req.params.id);
-    const user = users.find(user => user.id === id);
+    const user = products.find(user => user.id === id);
     return res.status(200).send(user);
 })
 
