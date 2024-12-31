@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: nodejs-product-service-nodeport
+  name: nodejs-product-service-nodeport
+spec:
+  ports:
+  - port: 3001
+    targetPort: 3001
+    nodePort: 30101
+  selector:
+    app: nodejs-product-service-deployment
+  type: NodePort

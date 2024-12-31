@@ -3,11 +3,13 @@ const app = express();
 
 const dotenv = require('dotenv');
 const bodyParser = require("body-parser");
+const cors = require("cors");
 dotenv.config();
 
 const port = process.env.PORT|| 3000;
 
 app.use(bodyParser.json());
+app.use(cors());
 
 app.get('/', (req, res) => {
     res.status(200).send('Hello World from User Service');

@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nodejs-user-service-deployment
+  name: nodejs-user-service-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nodejs-user-service-deployment
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: nodejs-user-service-deployment
+    spec:
+      containers:
+        - image: sg6web/nodejs-k8s-user-service-test-app:latest
+          name: nodejs-k8s-user-service-test-app
+          imagePullPolicy: "Always"
+          resources:
+            limits:
+              cpu: "100m"
+              memory: "100Mi"
+            requests:
+              cpu: "50m"
+              memory: "50Mi"
+      terminationGracePeriodSeconds: 30
+
