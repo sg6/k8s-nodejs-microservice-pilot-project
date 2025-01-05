@@ -18,7 +18,10 @@ spec:
       initContainers:
         - name: init-envjs
           image: busybox:1.28
-          command: [ 'sh', '-c', 'echo "window.productApiUrl = \"$VITE_PRODUCT_API_URL\"; window.userApiUrl = \"$VITE_USER_API_URL\";" > /tmp/init-envjs/app-config.js' ]
+          command:
+          - 'sh'
+          - '-c'
+          - 'echo "window.productApiUrl = \"$VITE_PRODUCT_API_URL\"; window.userApiUrl = \"$VITE_USER_API_URL\";" > /tmp/init-envjs/app-config.js'
           env:
             - name: VITE_PRODUCT_API_URL
               valueFrom:
