@@ -18,9 +18,9 @@ provider "vultr" {
   retry_limit = 3
 }
 
-resource "vultr_kubernetes" "k8" {
+resource "vultr_kubernetes" "vke_cluster" {
   region  = "ams"
-  label   = "vke-test"
+  label   = "vke-nodejs-app-custer"
   version = "v1.31.2+1"
 
   node_pools {

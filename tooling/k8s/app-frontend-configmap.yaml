@@ -1,7 +1,7 @@
 apiVersion: v1
 data:
-  VITE_PRODUCT_API_URL: "http://199.247.31.106:30101"
-  VITE_USER_API_URL: "http://199.247.31.106:30100"
+  VITE_PRODUCT_API_URL: "https://nodejs-app-product-backend.k8s.sgweb.space"
+  VITE_USER_API_URL: "https://nodejs-app-user-backend.k8s.sgweb.space"
 kind: ConfigMap
 metadata:
   name: frontend-config
